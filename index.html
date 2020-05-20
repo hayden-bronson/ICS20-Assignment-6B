@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <meta name="description" content="My first webpage, with image">
+      <meta name="keywords" content="mths, website">
+      <meta name="author" content="Hayden Bronson">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Another Webpage</title>
+    </head>
+    <body onload="submitorder()">
+    <p>Custom Pizza Maker</p>
+    <label for="Textbox">What Size of Pizza.</label>
+      <select id="size" name="size" onchange="submitorder()">
+        <option value="6.00">Large</option>
+      <option value="10.00 ">Extra Large</option>
+      </select>
+      <br></br>
+    <label for="Textbox">Number of toppings.</label>
+      <select id="toppings" name="toppings" onchange="submitorder()">
+      <option value="1.00">One</option>
+      <option value="1.75">Two</option>
+      <option value="2.50">Three</option>
+      <option value="3.35">Four.</option>
+      </select>
+      <br></br>
+      <label for="subtotal">Subtotal:</label>
+      <input type="text" id="subtotal" name="subtotal" value="" readonly>
+      <br></br>
+      <label for="tax">Tax:</label>
+      <input type="text" id="tax" name="tax" value="" readonly>
+      <br></br>
+      <label for="total">Total Cost:</label>
+      <input type="text" id="total" name="total" value="" readonly>
+      <br></br>
+  <script>
+        function submitorder() {
+        let size;
+        let toppings;
+        let subtotal;
+        let tax;
+        let total;
+        size  = parseFloat(document.getElementById("size").value);
+        toppings  = parseFloat(document.getElementById("toppings").value);
+        subtotal = size
+        subtotal = (size + toppings);
+        tax  = subtotal * .13;
+        total = subtotal + tax;
+        document.getElementById("subtotal").value = (new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(subtotal));
+        document.getElementById("tax").value = (new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(tax));
+        document.getElementById("total").value = (new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(total));
+        }
+  </script>      
+    </body>
+</html>
